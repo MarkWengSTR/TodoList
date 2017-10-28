@@ -1,0 +1,9 @@
+<table class="table table-straped">
+  <tr>
+    <td><h4><%= @todo.title %></h4> </td>
+    <td><h4>Due date: <%= @todo.date %></h4></td>
+    <td><h4>Today: <%= Date.today %>, Remaining: <%= (@todo.date-Date.today).to_i %> days </h4></td>
+    <td><h4><%= @todo.description %></h4></td> 
+  </tr>
+</table>
+<%= link_to 'Back to index', todos_path, class:'btn btn-info' %>

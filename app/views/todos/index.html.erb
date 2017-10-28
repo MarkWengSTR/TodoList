@@ -1,0 +1,23 @@
+
+<table class="table list-group">
+
+  <% @todos.each do |todo|%>
+    <h4>  
+          <td><input type="checkbox"><%= todo.title %></td>
+          <td>Due date: <%= todo.date %></td>
+          <td>Today: <%= Date.today %>, Remaining: <%= (todo.date-Date.today).to_i %> days </td>
+          <td><%= link_to 'Show more ', todo_path(todo) %></td>
+          <td><%= link_to 'Edit', edit_todo_path(todo)%></td>
+          <td>
+            <% if (todo.date-Date.today).to_i > 0 %>
+              <%= link_to 'Delete', todo_path(todo), method: :delete, data:{ confirm: "Are you sure" }%>
+            <% else %>
+              <p>Delete</p>
+            <% end %>
+          </td>
+    </tr>
+  <% end %>
+
+</table>
+
+<%= link_to 'new Todo', new_todo_path, class:'btn btn-success' %> 
